@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Upload News</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+      integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" 
+      crossorigin="anonymous"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+      rel="stylesheet" crossorigin="anonymous" referrerpolicy="no-referrer"
+      integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="/>
+    <meta name="keywords" content="HTML, CSS, JavaScript" />
+    <meta name="description" content="This is an example of a meta description. 
+      This will often show up in search results."/>
+  </head>
+  <body>
+    <div class="main-block">
+      <h1>Upload News</h1>
+      <form  (ngSubmit)="uploadNews()">
+        <hr />
+        <label for="title">Title</label>
+      <input type="text" placeholder="title" name="name" required [(ngModel)]="payload.name" #name="ngModel" />
+      <hr />
+      <label for="image1">Image</label>
+      <input type="file" accept="image/*" name="image1" required [(ngModel)]="payload.image1"
+        (change)="onImageSelected($event)" #image1="ngModel" />
+      <hr />
+        <select name="category_id" [(ngModel)]="payload.category_id" #category_id="ngModel">
+          <option selected>Open this select menu</option>
+          <option value="1">Insights</option>
+          <option value="2">Stories</option>
+        </select>
+        <hr />
+        <label for="news">News Content</label>
+        <input type="text" name="description" required [(ngModel)]="payload.description" 
+        #description="ngModel"/>
+        <hr />
+        <div>
+          <i class="fa fa-facebook"><input type="text" /></i>
+            <i class="fa fa-twitter"><input type="text" /></i>
+            <i class="fa fa-instagram"><input type="text" /></i>
+            <i class="fa fa-linkedin"><input type="text" /></i>
+            <i class="fa fa-youtube"><input type="text" /></i>
+        </div>
+        <hr />
+        <hr />
+        <div class="btn-block">
+          <button type="submit" >Submit</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

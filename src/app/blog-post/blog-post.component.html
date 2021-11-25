@@ -1,0 +1,192 @@
+
+
+<div class="section">
+
+<div class="container">
+
+<div class="row">
+
+<div class="col-md-8">
+<div class="section-row sticky-container"  >
+<div class="main-post">
+<h3>{{data.name}}</h3>
+<p></p>
+<figure class="figure-img">
+<img class="img-responsive" src="{{ url }}/{{ data.image1 }}" alt="">
+<figcaption> </figcaption>
+</figure>
+<p></p>
+<p></p>
+<p></p>
+<blockquote class="blockquote">
+{{data.description}}
+</blockquote>
+<p></p>
+
+<div>Share this story : 
+    <ul class="footer-social">
+        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+        <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+        </ul>
+</div>
+</div>
+<div class="post-shares sticky-shares">
+<a href="{{data.facebook}}"  target="_blank" class="share-facebook"><i class="fa fa-facebook"></i></a>
+<a href="{{data.twitter}}" target="_blank" class="share-twitter"><i class="fa fa-twitter"></i></a>
+<a href="https://plus.google.com/share?url=[http://13.126.48.7/api/news/{{data.name}}]" target="_blank" class="share-google-plus"><i class="fa fa-google-plus"></i></a>
+<a href="https://pinterest.com/pin/create/bookmarklet/?media=[post-img]&url=[http://13.126.48.7/api/news/{{data.name}}]&is_video=[is_video]&description=[{{data.description}}]" target="_blank" class="share-pinterest"><i class="fa fa-pinterest"></i></a>
+<a href="https://www.linkedin.com/shareArticle?url=[http://13.126.48.7/api/news/{{data.name}}]&title=[{{data.name}}]" target="_blank" class="share-linkedin"><i class="fa fa-linkedin"></i></a>
+<a href="$email = 'mailto:?subject=' . $[{{data.name}}] . '&body=Check out this site: '. $[http://13.126.48.7/api/news/{{data.name}}] .'" title="Share by Email';" target="_blank"><i class="fa fa-envelope"></i></a>
+</div>
+</div>
+
+
+
+
+<div class="section-row" >
+<div class="section-title">
+<h2>{{commentlength}} Comments</h2>
+</div>
+<div class="post-comments" >
+
+<div class="media"  *ngFor="let comment of data.comment">
+<div class="media-left">
+<img class="media-object" src="assets/img/avatar.png" alt="">
+</div>
+<div class="media-body">
+<div class="media-heading">
+<h4>{{comment.name}}</h4>
+<span class="time">{{comment.created_at | date}}</span>
+<a href="#" class="reply">Reply</a>
+</div>
+<p>{{comment.message}}</p>
+</div>
+</div>
+
+</div>
+</div>
+
+<!--    --------------------------------   Leave A Reply   ---------------------------------   --------- -->
+<div class="section-row">
+<div class="section-title">
+<h2>Leave a reply</h2>
+<p>your email address will not be published. required fields are marked *</p>
+</div>
+<form class="post-reply" (ngSubmit)="commentMethod()">
+<div class="row">
+<div class="col-md-4">
+<div class="form-group">
+<span>Name *</span>
+<input class="input" type="text" name="name" [(ngModel)]="payload.name" #name="ngModel">
+</div>
+</div>
+<div class="col-md-4">
+<div class="form-group">
+<span>Email *</span>
+<input class="input" type="email" name="email" [(ngModel)]="payload.email" #email="ngModel">
+</div>
+</div>
+<div class="col-md-12">
+<div class="form-group">
+<textarea class="input" name="message" placeholder="Message" [(ngModel)]="payload.message" #message="ngModel"></textarea>
+</div>
+<div class="col-md-12">
+<div class="form-group">
+    <input class="input" type="text" hidden name="email" [(ngModel)]="payload.id" #id="ngModel">   
+</div>
+<button class="primary-button" type="submit">Submit</button>
+</div>
+</div>
+</div>
+</form>
+</div>
+
+</div>
+
+
+<div class="col-md-4">
+
+
+
+
+<!--     --------------------------------   MOST READ   ------------------------------------------     -->
+<div class="aside-widget">
+<div class="section-title">
+<h2>Most Read</h2>
+</div>
+<div class="post post-widget">
+<a class="post-img" routerLink=''><img src="{{ url }}/{{ data.image1 }}" alt=""></a>
+
+<div class="post-body">
+<h3 class="post-title"><a routerLink='/blogpost/category_id/1'>{{ data.name }}</a></h3>
+</div>
+</div>
+
+</div>
+
+
+<!--     --------------------------------  FEATURED POST   ------------------------------------        -->
+<div class="aside-widget">
+<div class="section-title">
+<h2>Featured Posts</h2>
+</div>
+<div class="post post-thumb" >
+<a class="post-img" href="blog-post.html"><img src="{{ url }}/{{ data.image1 }}" alt=""></a>
+<div class="post-body">
+<div class="post-meta">
+<a class="post-category cat-3" href="#">{{data.cname}}</a>
+<span class="post-date">{{ data.created_at | date }}</span>
+</div>
+<h3 class="post-title"><a href="blog-post.html">{{ data.name }}</a></h3>
+</div>
+</div>
+</div>
+
+
+<div class="aside-widget">
+<div class="section-title">
+<h2>Categories</h2>
+</div>
+<div class="category-widget">
+<ul>
+<li><a href="#" class="cat-1">Web Design<span>340</span></a></li>
+<li><a href="#" class="cat-2">JavaScript<span>74</span></a></li>
+<li><a href="#" class="cat-4">JQuery<span>41</span></a></li>
+<li><a href="#" class="cat-3">CSS<span>35</span></a></li>
+</ul>
+</div>
+</div>
+
+
+<div class="aside-widget" >
+<div class="tags-widget" >
+<ul>
+<li><a href="#">{{data.tags}}</a></li>
+
+</ul>
+</div>
+</div>
+
+
+<div class="aside-widget">
+<div class="section-title">
+<h2>Archive</h2>
+</div>
+<div class="archive-widget">
+<ul>
+<li><a href="#">January 2018</a></li>
+<li><a href="#">Febuary 2018</a></li>
+<li><a href="#">March 2018</a></li>
+</ul>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
